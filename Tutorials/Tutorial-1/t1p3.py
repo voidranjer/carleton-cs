@@ -1,8 +1,8 @@
-from random import uniform
+from random import randint
 
 def main():
-    # uniform() is inclusive -> [1, 100], not [1, 100)
-    random_int = round(uniform(1, 100))
+    # inclusive -> [1, 100], not [1, 100)
+    random_int = randint(1, 100)
     guess = int(input("Guess a number between 1 and 100: "))
     diff = abs(guess - random_int)
     
