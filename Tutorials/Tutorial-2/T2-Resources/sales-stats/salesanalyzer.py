@@ -1,5 +1,5 @@
-# TODO: Test if reading file outside of the function and use globals will work in a module
-
+# ASK: If the dict and max(,key=) is ok
+# ASK: What to make of the "*"
 
 # ================================= PROBLEM 1 =================================
 
@@ -70,7 +70,34 @@ def get_total_customer_purchases(filename, customer):
     return sum
 
 def get_average_customer_purchases(filename, customer):
+    # Customer doesn't exist in record
+    if (get_number_customer_purchases(filename, customer) == 0):
+        return 0
     average = get_total_customer_purchases(filename, customer)/get_number_customer_purchases(filename, customer)
     return round(average, 2)
 
 # ================================= PROBLEM 2 =================================
+
+
+
+# ================================= PROBLEM 3 =================================
+
+def get_most_popular_product(filename):
+    infile = open(filename, "r")
+
+    products = {"Desktop": 0, "Laptop": 0, "Tablet": 0, "Toaster": 0}
+    
+    n_purchases = get_number_purchases(filename)
+
+    # NOTE: _ denotes a variable that will not be used at any point in time during execution
+    for _ in range(n_purchases):
+        infile.readline() # Name of customer (unused)
+        for product in products:
+            products[product] += int(infile.readline())
+        infile.readline() # Total purchase cost (unused)
+    
+    infile.close()
+
+    return max(products, key=products.get)
+
+# ================================= PROBLEM 3 =================================

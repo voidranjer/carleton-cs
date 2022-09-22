@@ -1,3 +1,3 @@
 import salesanalyzer
 
-print(salesanalyzer.get_average_customer_purchases("salesinfo1.txt", "Adrian"))
+print(salesanalyzer.get_average_purchases("salesinfo0.txt"))
