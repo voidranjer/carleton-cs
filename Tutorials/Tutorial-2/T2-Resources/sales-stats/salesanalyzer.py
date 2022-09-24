@@ -1,6 +1,3 @@
-# ASK: If the dict and max(,key=) is ok
-# ASK: What to make of the "*"
-
 # ================================= PROBLEM 1 =================================
 
 def get_number_purchases(filename):
