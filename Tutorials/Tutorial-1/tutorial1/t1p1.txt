@@ -1,0 +1,16 @@
+1. Let player1_score and player2_score = 0
+2. While player1_score is not more than 4 and player2_score is also not more than 4:
+3.   Prompt player1 to input their option by printing out "Please choose from 'Rock', 'Paper', and 'Scissors'"
+4.   Set player1_selection to player1's choice
+5.   Prompt player2 to input their option by printing out "Please choose from 'Rock', 'Paper', and 'Scissors'"
+6.   Set player2_selection to player2's choice
+7.   If player1_selection is "Rock" and player2_selection is "Scissors" OR player1_selection is "Paper" and player2_selection is "Rock" OR player1_selection is "Scissors" and player2_selection is "Paper", then:
+8.     Add 1 to player1_score
+9.   Or else, if player2_selection is "Rock" and player1_selection is "Scissors" OR player2_selection is "Paper" and player1_selection is "Rock" OR player2_selection is "Scissors" and player1_selection is "Paper", then:
+10.     Add 1 to player2_score
+11.   Otherwise, if player1_selection is the same as player2_selection, then:
+12.     Print out "It's a draw!"
+13. If player1_score = 4, then:
+14.   Print "Player 1 won!"
+15. Else if player2_score = 4, then:
+16.   Print "Player 2 won!"
