@@ -9,6 +9,10 @@ def max_to_file(ceiling):
     # Returns line number of max student (to be deleted) - also, the line starts from line 1, not 0
     # Returns -1 if the file is already empty
 
+    # Break recursion
+    if ceiling == -1:
+        return None
+
     outfile = open("sorted.txt", "a")
     with open("outfile.txt", "r") as infile:
         max_student_name = None
@@ -36,22 +40,7 @@ def max_to_file(ceiling):
                               str(max_grade) + "\n")
 
     outfile.close()
-    return max_grade
-
-
-def sort_to_file():
-    # Expects a correctly formatted file "outfile.txt"
-
-    # Resets sorted.txt output file (start appending to a clean sorted.txt file)
-    with open("sorted.txt", "w") as outfile:
-        outfile.write("")
-
-    ceiling = 100
-    ceiling = max_to_file(ceiling)
-    while ceiling != -1:
-        return_value = max_to_file(ceiling)
-        if return_value < ceiling:
-            ceiling = return_value
+    return max_to_file(max_grade)
 
 
 def print_sorted_grades(filename):
@@ -80,8 +69,14 @@ def print_sorted_grades(filename):
     infile.close()
     outfile.close()
 
-    sort_to_file()
+    # Resets "sorted.txt"
+    with open("sorted.txt", "w") as outfile:
+        outfile.write("")
+    max_to_file(100)
 
     with open("sorted.txt", "r") as infile:
         for line in infile:
             print(line.strip())
+
+
+print_sorted_grades('studentinfo0.txt')
