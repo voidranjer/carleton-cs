@@ -11,22 +11,29 @@ def max_to_file(filename, ceiling):
 
     outfile = open("sorted.txt", "a")
     with open(filename, "r") as infile:
-        max_student_name = "PLACEHOLDER"
+        max_student_name = None
+        second_max_student_name = None
         max_grade = -1
 
         buffer = infile.readline()
         while buffer != "":
             student_name = buffer.strip()
             grade = float(infile.readline().strip())
-            if (grade >= max_grade and grade < ceiling):
+            if (grade > max_grade and grade < ceiling):
                 max_grade = grade
                 max_student_name = student_name
+                second_max_student_name = None
+            elif grade == max_grade and student_name != max_student_name:
+                second_max_student_name = student_name
 
             buffer = infile.readline()
 
         if (max_grade != -1):
             outfile.write(max_student_name + " with grade " +
                           str(max_grade) + "\n")
+            if (second_max_student_name != None):
+                outfile.write(second_max_student_name + " with grade " +
+                              str(max_grade) + "\n")
 
     outfile.close()
     return max_grade
@@ -80,4 +87,4 @@ def print_sorted_grades(filename):
             print(line.strip())
 
 
-print_sorted_grades("studentinfo1.txt")
+print_sorted_grades("studentinfo4.txt")
