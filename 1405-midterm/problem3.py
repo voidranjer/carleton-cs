@@ -3,14 +3,14 @@ MID_WEIGHT = 30
 EXAM_WEIGHT = 45
 
 
-def max_to_file(filename, ceiling):
+def max_to_file(ceiling):
     # Finds the max that is below the 'ceiling' value
     # Appends max to sorted.txt, in descending order (first line is the max, second line is next highest, etc)
     # Returns line number of max student (to be deleted) - also, the line starts from line 1, not 0
     # Returns -1 if the file is already empty
 
     outfile = open("sorted.txt", "a")
-    with open(filename, "r") as infile:
+    with open("outfile.txt", "r") as infile:
         max_student_name = None
         second_max_student_name = None
         max_grade = -1
@@ -47,9 +47,9 @@ def sort_to_file():
         outfile.write("")
 
     ceiling = 100
-    ceiling = max_to_file("outfile.txt", ceiling)
+    ceiling = max_to_file(ceiling)
     while ceiling != -1:
-        return_value = max_to_file("outfile.txt", ceiling)
+        return_value = max_to_file(ceiling)
         if return_value < ceiling:
             ceiling = return_value
 
@@ -85,6 +85,3 @@ def print_sorted_grades(filename):
     with open("sorted.txt", "r") as infile:
         for line in infile:
             print(line.strip())
-
-
-print_sorted_grades("studentinfo4.txt")
