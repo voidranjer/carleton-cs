@@ -14,13 +14,13 @@ def mult_matrix(a, b):
 	
 	results = []
 
-	row = 0
-
-	for b_column in range(len(b[0])):
-		sum = 0
-		for a_column in range(len(a[0])):
-			sum += a[row][a_column] * b[a_column][b_column]
-		results.append(sum)
+	for a_row in range(len(a)):
+		results.append([])
+		for b_column in range(len(b[0])):
+			sum = 0
+			for a_column in range(len(a[0])):
+				sum += a[a_row][a_column] * b[a_column][b_column]
+			results[a_row].append(sum)
 
 
 
@@ -41,14 +41,12 @@ def mult_matrix(a, b):
 def euclidean_dist(a,b):
 	return -1
 
-a = [
-	[1, 2],
-	[3, 4]
-]
+a = [[1, 2, 3]]
 
 b = [
-	[2, 0],
-	[1, 2]
+[4],
+[5],
+[6],
 ]
 
 print(mult_matrix(a, b))
