@@ -21,32 +21,14 @@ def mult_matrix(a, b):
 			for a_column in range(len(a[0])):
 				sum += a[a_row][a_column] * b[a_column][b_column]
 			results[a_row].append(sum)
-
-
-
-	# for a_row in range(len(a)):
-	# 	results.append([])
-	# 	sum = 0
-
-	# 	for b_column in range(len(b[0])):
-	# 		for a_column in range(len(a[0])):
-	# 			sum += a[a_row][a_column] * b[a_column][b_column]
-			
-	# 		results[a_row].append(sum)
-
 	return results
 
 
 	
 def euclidean_dist(a,b):
-	return -1
-
-a = [[1, 2, 3]]
-
-b = [
-[4],
-[5],
-[6],
-]
-
-print(mult_matrix(a, b))
+	sum_of_squares = 0
+	for dimension in range(len(a[0])):
+		difference = a[0][dimension] - b[0][dimension]
+		sum_of_squares += difference**2
+	
+	return sum_of_squares**(1/2)
