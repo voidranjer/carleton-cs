@@ -1,9 +1,16 @@
 def count(list1, list2):
-    count = 0
+    list2_index = counter = 0
+    for char in list1:
+        if char == list2[list2_index]:
+            if list2_index == len(list2) - 1:
+                list2_index == 0
+                counter += 1
+            else:
+                list2_index += 1
+        else:
+            list2_index = 0
 
-    for item in list2:
-        if item in list1:
-            count += 1
-            list1.remove(item)
+    return counter
 
-    return count
+
+print(count(["a", "b", "c", "a", "t", "a", "c", "a", "t"], ["c", "a", "t"]))
