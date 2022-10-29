@@ -3,26 +3,20 @@ def average(inlist):
 
 
 def coldest_interval(alist, x):
-    counter = 0
-    temps = []
-    temp_intervals = []
-
-    # This is to ensure that the last 'x' items in 'alist' is always included in the for loop
-    # alist.extend([None for _ in range(x)])
-
     if len(alist) == x:
         return average(alist)
 
-    for temp in alist:
-        if counter < x:
-            temps.append(temp)
-        else:
-            temp_intervals.append(temps)
-            counter = 0
-            temps = [temp]
-        counter += 1
+    averages = []
 
-    if len(alist) % x != 0:
-        temp_intervals.append(alist[-x:])
+    index = 0
+    while True:
+        if (index + x) > len(alist):
+            break
 
-    return min([average(temps) for temps in temp_intervals])
+        interval = []
+        for i in range(x):
+            interval.append(alist[index + i])
+        averages.append(average(interval))
+        index += 1
+
+    return min(averages)
