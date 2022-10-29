@@ -11,6 +11,3 @@ def count(list1, list2):
             list2_index = 0
 
     return counter
-
-
-print(count(["a", "b", "c", "a", "t", "a", "c", "a", "t"], ["c", "a", "t"]))

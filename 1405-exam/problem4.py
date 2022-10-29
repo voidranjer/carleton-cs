@@ -44,6 +44,3 @@ def sorted_prices(filename):
             line = infile.readline().strip()
 
     return selection_sort(prices)
-
-
-print(sorted_prices('autoshow-example.txt'))
