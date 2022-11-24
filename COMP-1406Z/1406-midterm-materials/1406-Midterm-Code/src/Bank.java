@@ -101,14 +101,25 @@ public class Bank {
         boolean addSucceeded = bank.addAccount(c1) && bank.addAccount(c2) && bank.addAccount(s1) && bank.addAccount(s2);
         System.out.println("All accounts added successfully: " + addSucceeded);
 
+        // Print bank information (automatically calls .toString())
+        System.out.println(bank);
+
+        // Add duplicate account number to bank
+        ChequingAccount dup = new ChequingAccount("Lei", bank, 2);
+        System.out.println("Duplicate account number added successfully (expected: false): " + bank.addAccount(dup));
+
         // Print bank information
-        System.out.println(bank.toString());
+        System.out.println(bank);
 
         // Add balance to accounts
         boolean depositSucceeded = c1.deposit(100) && c2.deposit(200) && s1.deposit(300) && s2.deposit(400);
         System.out.println("All deposits succeeded: " + depositSucceeded);
 
+        // Add negative balance to account
+        System.out.println("Negative deposit succeeded (expected: false): " + c1.deposit(-100));
+
         // Perform monthly upkeep (for a year)
+        System.out.println("Performing monthly upkeep for a year...");
         for (int i = 0; i < 12; i++) {
             bank.performMonthlyUpkeep();
         }
@@ -119,5 +130,15 @@ public class Bank {
         // Transfer money
         boolean transferSucceeded = bank.transfer(0, 1, 50);
         System.out.println("Transfer succeeded: " + transferSucceeded);
+
+        // Transfer negative amount
+        System.out.println("Negative amount transfer succeeded (expected: false): " + bank.transfer(0, 1, -50));
+
+        // Transfer from invalid accounts
+        System.out.println("Transfer between the same account succeeded (expected: false): " + bank.transfer(0, 0, 50));
+        System.out.println("Transfer from invalid accounts succeeded (expected: false): " + bank.transfer(0, 9, 50));
+
+        // Transfer invalid funds
+        System.out.println("Transfer invalid funds succeeded (expected: false): " + bank.transfer(0, 1, 10000));
     }
 }
