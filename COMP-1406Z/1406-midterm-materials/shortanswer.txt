@@ -1,16 +1,33 @@
-Explain each of the following terms in your own words: abstraction, encapsulation, inheritance, polymorphism. Discuss the benefits each can provide when developing OOP software, especially in larger, longer-running projects involving multiple developers. You should include comments regarding how each could affect the maintainability, extensibility, and robustness of the software. You should also include arguments or examples based on your own experience within 1405/1406.
-
+Explain each of the following terms in your own words: abstraction, encapsulation, inheritance, polymorphism. Discuss the benefits/drawbacks each can provide when developing OOP software, especially in larger, longer-running projects involving multiple developers. You should include comments regarding how each could affect the maintainability, extensibility, and robustness of the software. You should also include arguments or examples based on your own experience within 1405/1406.
 
 a) Abstraction
+When working in large-scale team projects, abstraction allows developers to treat other developers' code/functions/programs as a kind of "black box", enabling developers to use other developers' work in their own code. This allows developers to focus on their own work, and not have to worry about the inner workings of other developers' code. This can be beneficial in the sense that it allows multiple developers to work together on a project as a team and achieve larger goals that a single lone developer will never be able to accomplish.
 
+However, this can also be a drawback in the sense that it can be difficult to understand other developers' code, and it can be difficult to debug code that you don't understand when an actual error occurs. We can also run into problems when we try to use other developers' code, and it doesn't work the way we expect it to.
 
+We can minimize these problems by using a specific set of conventions, spefications, and documentation according to the concepts of abstraction and Object Oriented Programming, greatly increasing the communication between developers and the predictability of the code.
+
+When making the COMP-1405Z Final Project (the search engine), we had to make one large project that has a huge number of various functions. The large number of functions in project makes it nearly impossible to keep track of everything while coding it, and so abstraction was used and each function was built independent of each other. This allowed for each function to be built one at a time, without having to worry about what other functions were doing. For example, the PageRank calculations were coded completely seperately from the Crawler functions.
 
 b) Encapsulation
+Encapsulation makes the attributes of a class private, so that other classes cannot work directly with the attributes of our class. This forces other classes to interact with our class in a very unambiguously specific way that we define.
 
+When we have full control over the inputs (arguments/paramters) and outputs (return values) of classes and functions, we can change the inner workings of a function/class without having to worry about breaking the code that uses it because we can be assured that the inputs and outputs will always be used/modified in the way we intended them to be and not in any unexpected way. This makes our code much more maintainable and predictable in the long run.
 
+Encapsulation also helps with security in the sense that we protect objects from unwanted access by other objects. This is done by making the objects private, and only allowing access to them through public functions. This allows us to have full control over what other objects can do with our objects.
+
+The downside of encapsulation is that it increases the amount of code written to make a class initially (due to having to write functions like getters/setters), but it reduces the overall complexity of the code when we start to scale up our projects because it makes the flow of data much more predictable and easier to understand. We can get a bird's eye view by just inspecting the getter/setter methods to see what processes are being done to the properties of our objects. This helps us to avoid failure and logic errors down the line.
+
+An example usage of encapsulation in COMP-1406Z is how we use the "private" modifiers on object attributes like "width" and "height" and create getter/setter methods like "getWidth" and "setWidth".
 
 c) Inheritance
+Inheritance is a way of grouping classes by their similarities. Parent and children classes have a "is-a" type relationship. For example, in the relationship between the "Bird" and an "Animal" classes, a "Bird" is a type of "Animal", and so "Animal" is the parent class and "Bird" is the child class. Inheritance can also help us to avoid code duplication by allowing us to reuse code from parent classes in child classes. This follows the DRY (Don't Repeat Yourself) principle of programming. That way, if we ever wanted to make any changes to a parent class, we only have to make the changes in one place, and the changes will be reflected in all of the child classes (instead of having to search through every subclass and update them one-by-one).
 
-
+We implemented the concept of inheritance in COMP-1406Z's tutorial 2 project when we made the "MovableObject" class and made the "Ball" and "Player" extend it. This allowed us to make the "moveForward" function in only one place (in the MovableObject class) and have it be used by both the "Ball" and "Player" classes.
 
 d) Polymorphism
+Polymorphism allows us to treat one object of a data type as another data type (type casting). Polymorphism exists in Java because of the way that Java handles inheritance and memory allocation. We can cast a subclass's object type to its parent class's object but we would have to do this explicitly in the syntax because we will lose access to some of the subclass-specific functionality after the type conversion. This is because the subclass-specific functionality is stored in the subclass's memory, and the parent class's memory only stores the parent class's functionality. This is why we have to explicitly cast the subclass's object type to its parent class's object type so that Java can make sure that we are not accidentally type casting and losing information. This is also why we can only cast children classes to their parent classes, and not the other way around, because parent classes do not have some of the children class's specialized functionality.
+
+The benefits of polymorphism can be seen when we try to create an array containing similar objects of different types (if they have the same parent - can be checked using the "instanceof" keyword, or if they both implement the same Interface). Without polymorphism, we would not be able to store objects of different data types into one array.
+
+In tutorial 2, we used polymorphism when we added different types of Game Objects to the gameObjects array with type of "GameObjects". This allowed us to execute the "gameObjects[i].update()" function in a loop without having to know the specific type of game object that is being updated (for example, Player or Ball).
