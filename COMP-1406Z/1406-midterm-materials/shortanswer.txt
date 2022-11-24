@@ -1,0 +1,16 @@
+Explain each of the following terms in your own words: abstraction, encapsulation, inheritance, polymorphism. Discuss the benefits each can provide when developing OOP software, especially in larger, longer-running projects involving multiple developers. You should include comments regarding how each could affect the maintainability, extensibility, and robustness of the software. You should also include arguments or examples based on your own experience within 1405/1406.
+
+
+a) Abstraction
+
+
+
+b) Encapsulation
+
+
+
+c) Inheritance
+
+
+
+d) Polymorphism
