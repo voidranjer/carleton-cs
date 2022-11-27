@@ -1,3 +1,5 @@
+GitIgnoreFolder/
+
 .DS_Store
 
 .idea/*
