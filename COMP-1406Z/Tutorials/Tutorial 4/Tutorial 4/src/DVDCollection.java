@@ -59,6 +59,18 @@ public class DVDCollection {
         return false;
     }
 
+    public boolean remove(int index) {
+        if (index < 0 || index >= dvdCount)
+            return false;
+
+        dvdCount--;
+
+        for (int i=index; i<dvdCount; i++) {
+            dvds[i] = dvds[i+1];
+        }
+        return true;
+    }
+
     public static DVDCollection example1() {
         DVDCollection c = new DVDCollection();
         c.add(new DVD("If I Was a Student", 2007, 65));

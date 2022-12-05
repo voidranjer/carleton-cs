@@ -50,35 +50,26 @@ public class DVDCollectionApp1  extends Application {
 
         view.getButtonPane().getDeleteButton().setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent actionEvent) {
-                // NOTE: This system will break down if there are multiple DVDs with the same title in the list.
-                // It will delete the first one it finds. In this case, the DVDs are sorted alphabetically by title.
-                // However, since this is not mentioned in the instructions, and the remove() method in the model was already defined by the prof, I will assume that this is to simplify things and not overcomplicate the code, so I will leave it as it is.
-                Object selectedDVD = view.getTitleList().getSelectionModel().getSelectedItem();
+                int index = view.getTitleList().getSelectionModel().getSelectedIndex();
 
                 // Nothing is selected
-                if (selectedDVD == null) {
+                if (index == -1) {
                     javax.swing.JOptionPane.showMessageDialog(null, "Please make a selection first!");
                     return;
                 }
 
-                // Depending on View1 or View2, "selectedDVD" could be type of either "DVD" or "String"
-                String title = selectedDVD.toString();
-                if (selectedDVD instanceof DVD) title = ((DVD) selectedDVD).getTitle();
-
-                model.remove(title);
+                model.remove(index);
                 view.update(model, 0);
             }
         });
 
-        if (view.getYearList() != null) {
-            view.getTitleList().setOnMousePressed(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent mouseEvent) {
-                    int index = view.getTitleList().getSelectionModel().getSelectedIndex();
-                    view.getYearList().getSelectionModel().selectIndices(index);
-                    view.getLengthList().getSelectionModel().selectIndices(index);
-                }
-            });
-        }
+
+        view.getTitleList().setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent mouseEvent) {
+                view.update(model, view.getTitleList().getSelectionModel().getSelectedIndex());
+            }
+        });
+
     }
 
     public static void main(String[] args) {

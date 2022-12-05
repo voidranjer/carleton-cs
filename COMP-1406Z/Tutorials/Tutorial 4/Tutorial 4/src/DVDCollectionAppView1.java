@@ -54,6 +54,9 @@ public class DVDCollectionAppView1 extends Pane implements DVDView {
         this.tList.setItems(FXCollections.observableArrayList(model.getDVDTitles()));
         this.yList.setItems(FXCollections.observableArrayList(model.getDVDYears()));
         this.lList.setItems(FXCollections.observableArrayList(model.getDVDLengths()));
+
+        getYearList().getSelectionModel().selectIndices(selectedDVD);
+        getLengthList().getSelectionModel().selectIndices(selectedDVD);
     }
 
 }

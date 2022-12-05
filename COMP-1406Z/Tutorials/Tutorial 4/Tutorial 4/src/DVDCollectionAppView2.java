@@ -56,17 +56,6 @@ public class DVDCollectionAppView2 extends Pane implements DVDView {
     @Override
     public void update(DVDCollection model, int selectedDVD) {
         this.tList.setItems(FXCollections.observableArrayList(model.getDVDList()));
-//        this.tList.getSelectionModel().select(selectedDVD);
-    }
-
-
-    @Override
-    public ListView<Integer> getYearList() {
-        return null;
-    }
-
-    @Override
-    public ListView<Integer> getLengthList() {
-        return null;
+        //        this.tList.getSelectionModel().select(selectedDVD);
     }
 }
